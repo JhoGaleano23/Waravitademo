@@ -16,7 +16,11 @@ import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as AuthenticatedCarritoRouteImport } from './routes/_authenticated/carrito'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
 import { Route as AuthenticatedJardinRouteImport } from './routes/_authenticated/jardin'
+import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as AuthenticatedRecordatoriosRouteImport } from './routes/_authenticated/recordatorios'
 import { Route as AuthenticatedTiendaRouteImport } from './routes/_authenticated/tienda'
+import { Route as AuthenticatedDiagnosticoIdRouteImport } from './routes/_authenticated/diagnostico.$id'
+import { Route as AuthenticatedPlantaIdRouteImport } from './routes/_authenticated/planta.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,9 +56,31 @@ const AuthenticatedJardinRoute = AuthenticatedJardinRouteImport.update({
   path: '/jardin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRecordatoriosRoute =
+  AuthenticatedRecordatoriosRouteImport.update({
+    id: '/recordatorios',
+    path: '/recordatorios',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedTiendaRoute = AuthenticatedTiendaRouteImport.update({
   id: '/tienda',
   path: '/tienda',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDiagnosticoIdRoute =
+  AuthenticatedDiagnosticoIdRouteImport.update({
+    id: '/diagnostico/$id',
+    path: '/diagnostico/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedPlantaIdRoute = AuthenticatedPlantaIdRouteImport.update({
+  id: '/planta/$id',
+  path: '/planta/$id',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
@@ -65,7 +91,11 @@ export interface FileRoutesByFullPath {
   '/carrito': typeof AuthenticatedCarritoRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/jardin': typeof AuthenticatedJardinRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
+  '/recordatorios': typeof AuthenticatedRecordatoriosRoute
   '/tienda': typeof AuthenticatedTiendaRoute
+  '/diagnostico/$id': typeof AuthenticatedDiagnosticoIdRoute
+  '/planta/$id': typeof AuthenticatedPlantaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -74,7 +104,11 @@ export interface FileRoutesByTo {
   '/carrito': typeof AuthenticatedCarritoRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/jardin': typeof AuthenticatedJardinRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
+  '/recordatorios': typeof AuthenticatedRecordatoriosRoute
   '/tienda': typeof AuthenticatedTiendaRoute
+  '/diagnostico/$id': typeof AuthenticatedDiagnosticoIdRoute
+  '/planta/$id': typeof AuthenticatedPlantaIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -85,15 +119,39 @@ export interface FileRoutesById {
   '/_authenticated/carrito': typeof AuthenticatedCarritoRoute
   '/_authenticated/inicio': typeof AuthenticatedInicioRoute
   '/_authenticated/jardin': typeof AuthenticatedJardinRoute
+  '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
+  '/_authenticated/recordatorios': typeof AuthenticatedRecordatoriosRoute
   '/_authenticated/tienda': typeof AuthenticatedTiendaRoute
+  '/_authenticated/diagnostico/$id': typeof AuthenticatedDiagnosticoIdRoute
+  '/_authenticated/planta/$id': typeof AuthenticatedPlantaIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/nosotros' | '/carrito' | '/inicio' | '/jardin' | '/tienda'
+    | '/'
+    | '/auth'
+    | '/nosotros'
+    | '/carrito'
+    | '/inicio'
+    | '/jardin'
+    | '/perfil'
+    | '/recordatorios'
+    | '/tienda'
+    | '/diagnostico/$id'
+    | '/planta/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/auth' | '/nosotros' | '/carrito' | '/inicio' | '/jardin' | '/tienda'
+    | '/'
+    | '/auth'
+    | '/nosotros'
+    | '/carrito'
+    | '/inicio'
+    | '/jardin'
+    | '/perfil'
+    | '/recordatorios'
+    | '/tienda'
+    | '/diagnostico/$id'
+    | '/planta/$id'
   id:
     | '__root__'
     | '/'
@@ -103,7 +161,11 @@ export interface FileRouteTypes {
     | '/_authenticated/carrito'
     | '/_authenticated/inicio'
     | '/_authenticated/jardin'
+    | '/_authenticated/perfil'
+    | '/_authenticated/recordatorios'
     | '/_authenticated/tienda'
+    | '/_authenticated/diagnostico/$id'
+    | '/_authenticated/planta/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -164,11 +226,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedJardinRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/perfil': {
+      id: '/_authenticated/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof AuthenticatedPerfilRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/recordatorios': {
+      id: '/_authenticated/recordatorios'
+      path: '/recordatorios'
+      fullPath: '/recordatorios'
+      preLoaderRoute: typeof AuthenticatedRecordatoriosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/tienda': {
       id: '/_authenticated/tienda'
       path: '/tienda'
       fullPath: '/tienda'
       preLoaderRoute: typeof AuthenticatedTiendaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/diagnostico/$id': {
+      id: '/_authenticated/diagnostico/$id'
+      path: '/diagnostico/$id'
+      fullPath: '/diagnostico/$id'
+      preLoaderRoute: typeof AuthenticatedDiagnosticoIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/planta/$id': {
+      id: '/_authenticated/planta/$id'
+      path: '/planta/$id'
+      fullPath: '/planta/$id'
+      preLoaderRoute: typeof AuthenticatedPlantaIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
   }
@@ -178,14 +268,22 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedCarritoRoute: typeof AuthenticatedCarritoRoute
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
   AuthenticatedJardinRoute: typeof AuthenticatedJardinRoute
+  AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
+  AuthenticatedRecordatoriosRoute: typeof AuthenticatedRecordatoriosRoute
   AuthenticatedTiendaRoute: typeof AuthenticatedTiendaRoute
+  AuthenticatedDiagnosticoIdRoute: typeof AuthenticatedDiagnosticoIdRoute
+  AuthenticatedPlantaIdRoute: typeof AuthenticatedPlantaIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCarritoRoute: AuthenticatedCarritoRoute,
   AuthenticatedInicioRoute: AuthenticatedInicioRoute,
   AuthenticatedJardinRoute: AuthenticatedJardinRoute,
+  AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
+  AuthenticatedRecordatoriosRoute: AuthenticatedRecordatoriosRoute,
   AuthenticatedTiendaRoute: AuthenticatedTiendaRoute,
+  AuthenticatedDiagnosticoIdRoute: AuthenticatedDiagnosticoIdRoute,
+  AuthenticatedPlantaIdRoute: AuthenticatedPlantaIdRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
