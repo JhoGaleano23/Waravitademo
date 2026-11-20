@@ -29,7 +29,7 @@ function Perfil() {
     setActivando(true);
     const { error } = await supabase.rpc("activar_premium");
     setActivando(false);
-    if (error) return toast.error(mensajeError(error));
+    if (error) { toast.error(mensajeError(error)); return; }
     await qc.invalidateQueries({ queryKey: ["perfil"] });
     toast.success("¡Bienvenido a WaraVita Premium! 👑");
   }

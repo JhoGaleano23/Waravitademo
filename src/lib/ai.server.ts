@@ -19,7 +19,7 @@ export const diagnosticoSchema = z.object({
 export type Diagnostico = z.infer<typeof diagnosticoSchema>;
 
 export async function analizarPlanta(imageDataUrl: string, descripcion: string, contexto: string) {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env['LOVABLE_API_KEY'];
   if (!apiKey) throw new Error("Falta configurar la IA.");
   const provider = createOpenAI({
     baseURL: "https://ai.gateway.lovable.dev/v1",

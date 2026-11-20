@@ -43,16 +43,16 @@ function Recordatorios() {
 
   async function crear() {
     const pid = plantaId || plantas.data?.[0]?.id;
-    if (!pid) return toast.error("Primero adquiere una planta.");
+    if (!pid) { toast.error("Primero adquiere una planta."); return; }
     const { data: u } = await supabase.auth.getUser();
     const { error } = await supabase.from("recordatorios").insert({ user_id: u.user!.id, planta_id: pid, tipo, fecha });
-    if (error) return toast.error(mensajeError(error));
+    if (error) { toast.error(mensajeError(error)); return; }
     qc.invalidateQueries({ queryKey: ["recordatorios"] });
     toast.success("Recordatorio creado ⏰");
   }
   async function toggle(id: string, completado: boolean) {
     const { error } = await supabase.from("recordatorios").update({ completado }).eq("id", id);
-    if (error) return toast.error(mensajeError(error));
+    if (error) { toast.error(mensajeError(error)); return; }
     qc.invalidateQueries({ queryKey: ["recordatorios"] });
   }
   async function borrar(id: string) {

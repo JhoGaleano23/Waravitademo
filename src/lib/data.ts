@@ -75,7 +75,7 @@ export const registrosQuery = (plantaId: string) =>
       let urls: Record<string, string> = {};
       if (paths.length) {
         const { data: signed } = await supabase.storage.from("fotos").createSignedUrls(paths, 3600);
-        urls = Object.fromEntries((signed ?? []).map((s) => [s.path ?? "", s.signedUrl]));
+        urls = Object.fromEntries((signed ?? []).map((s) => [s.path ?? "", s.signedUrl ?? ""]));
       }
       return data.map((r) => ({ ...r, url: r.foto_path ? urls[r.foto_path] : undefined }));
     },

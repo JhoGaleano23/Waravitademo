@@ -37,7 +37,7 @@ function Ficha() {
 
   async function guardar() {
     const { error } = await supabase.from("plantas_usuario").update({ nombre_personalizado: nombre.trim() || p!.nombre_personalizado, etapa: etapa as never }).eq("id", id);
-    if (error) return toast.error(mensajeError(error));
+    if (error) { toast.error(mensajeError(error)); return; }
     qc.invalidateQueries({ queryKey: ["planta", id] });
     qc.invalidateQueries({ queryKey: ["plantas"] });
     setEdit(false);
@@ -87,7 +87,7 @@ function Ficha() {
       <h2 className="mx-5 mt-6 font-extrabold">Evolución del espécimen</h2>
       <div className="mx-5 mt-4 flex items-start">
         {ETAPAS.map((s, i) => {
-          const I = iconos[i];
+          const I = iconos[i] ?? Check;
           const done = i < idx, cur = i === idx;
           return (
             <div key={s.id} className="flex flex-1 items-start">
