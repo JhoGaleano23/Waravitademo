@@ -6,7 +6,7 @@ Proyecto de la materia Proyecto en Innovación y Emprendimiento en TI, Pontifici
 
 Enlaces
 App publicada (probar sin instalar): https://pixel-perfect-picture-7195.lovable.app
-Repositorio: https://github.com/JhoGaleano23/pixel-perfect-picture-7195
+Repositorio: 
 ¿Qué es WaraVita?
 
 Muchas personas pierden sus plantas porque no saben qué especie tienen ni cómo cuidarla. WaraVita acompaña al usuario desde la siembra: compra un kit, registra su planta en una enciclopedia digital coleccionable y usa la cámara del celular para recibir un diagnóstico de salud y recomendaciones de cuidado.
