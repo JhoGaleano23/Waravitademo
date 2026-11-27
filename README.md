@@ -1,26 +1,46 @@
-# Pixel Perfect Picture
+WaraVita
 
-Implement exactly the screenshot and nothing else
+Ecosistema que une un kit de siembra con una aplicación web/móvil para identificar, cuidar y coleccionar plantas nativas colombianas, con diagnóstico asistido por inteligencia artificial.
 
-This project was built with [Lovable](https://lovable.dev).
+Proyecto de la materia Proyecto en Innovación y Emprendimiento en TI, Pontificia Universidad Javeriana (Ingeniería de Sistemas).
 
-**Live app**: https://pixel-perfect-picture-7195.lovable.app
+Enlaces
+App publicada (probar sin instalar): https://pixel-perfect-picture-7195.lovable.app
+Repositorio: https://github.com/JhoGaleano23/pixel-perfect-picture-7195
+¿Qué es WaraVita?
 
-## Build with Lovable
+Muchas personas pierden sus plantas porque no saben qué especie tienen ni cómo cuidarla. WaraVita acompaña al usuario desde la siembra: compra un kit, registra su planta en una enciclopedia digital coleccionable y usa la cámara del celular para recibir un diagnóstico de salud y recomendaciones de cuidado.
+Tecnologías
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/955c4e5f-1774-4d6d-bcb8-a87d53c7dffd).
+Según la estructura del proyecto:
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+TanStack Start (React) con TypeScript y Vite
+Bun como gestor de paquetes (bun.lock)
+Supabase como backend (carpeta supabase) y Drizzle ORM (carpeta drizzle)
+Vitest, ESLint y Prettier para pruebas y calidad de código
+Construido con Lovable
+Instalación local
 
-## Development
+Requisitos: Node.js (versión 18 o superior) o Bun.
+git clone https://github.com/JhoGaleano23/pixel-perfect-picture-7195.git
+cd pixel-perfect-picture-7195
+npm install      # o: bun install
+npm run dev      # o: bun run dev
+El archivo .env incluido en el repositorio contiene la configuración necesaria para conectar con el backend. [CONFIRMAR: que solo tenga claves públicas]
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+Cómo probar la demo
+Abrir la app publicada: https://pixel-perfect-picture-7195.lovable.app
+[CONFIRMAR: si hace falta registrarse, indicar usuario y contraseña de prueba]
+Recorrer en este orden: Inicio, Tienda, Mi jardín, Ficha de planta y Diagnóstico con IA.
+Para el diagnóstico, subir o tomar una foto de una hoja o planta.
+Limitaciones del MVP
+Es un prototipo para validar la idea, no un producto final.
+[CONFIRMAR: el pago es simulado]
+[CONFIRMAR: los datos de especies y kits son de ejemplo]
+[CONFIRMAR: el diagnóstico de IA es orientativo y puede equivocarse]
+Equipo
+Integrante	Rol
+Diego Martínez	Desarrollador Backend
+Karol Torres	Frontend y diseño UI/UX
+Jhoan Galeano	[CONFIRMAR: mismo cargo que en el pitch]
+Juan Duarte	Marketing
