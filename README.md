@@ -26,7 +26,7 @@ git clone https://github.com/JhoGaleano23/pixel-perfect-picture-7195.git
 cd pixel-perfect-picture-7195
 npm install      # o: bun install
 npm run dev      # o: bun run dev
-El archivo .env incluido en el repositorio contiene la configuración necesaria para conectar con el backend. [CONFIRMAR: que solo tenga claves públicas]
+El archivo .env incluido en el repositorio contiene la configuración necesaria para conectar con el backend.
 
 Cómo probar la demo
 Abrir la app publicada: https://pixel-perfect-picture-7195.lovable.app
@@ -35,12 +35,12 @@ Recorrer en este orden: Inicio, Tienda, Mi jardín, Ficha de planta y Diagnósti
 Para el diagnóstico, subir o tomar una foto de una hoja o planta.
 Limitaciones del MVP
 Es un prototipo para validar la idea, no un producto final.
-[CONFIRMAR: el pago es simulado]
-[CONFIRMAR: los datos de especies y kits son de ejemplo]
-[CONFIRMAR: el diagnóstico de IA es orientativo y puede equivocarse]
+ el pago es simulado]
+los datos de especies y kits son de ejemplo]
+[el diagnóstico de IA es orientativo y puede equivocarse]
 Equipo
 Integrante	Rol
 Diego Martínez	Desarrollador Backend
 Karol Torres	Frontend y diseño UI/UX
-Jhoan Galeano	[CONFIRMAR: mismo cargo que en el pitch]
+Jhoan Galeano	Desarrollador Fronted
 Juan Duarte	Marketing
