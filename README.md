@@ -41,8 +41,8 @@ los datos de especies y kits son de ejemplo]
 [el diagnóstico de IA es orientativo y puede equivocarse]
 
 Equipo
-Integrante	Rol
-Diego Martínez	Desarrollador Backend
-Karol Torres	Frontend y diseño UI/UX
-Jhoan Galeano	Desarrollador Fronted
-Juan Duarte	Marketing
+Integrante	Rol  \
+Diego Martínez	Desarrollador Backend\
+Karol Torres	Frontend y diseño UI/UX\
+Jhoan Galeano	Desarrollador Fronted\
+Juan Duarte	Marketing\
