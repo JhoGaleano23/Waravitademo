@@ -45,4 +45,4 @@ Integrante	Rol  \
 Diego Martínez	Desarrollador Backend\
 Karol Torres	Frontend y diseño UI/UX\
 Jhoan Galeano	Desarrollador Fronted\
-Juan Duarte	Marketing\
+Juan Duarte	Marketing
