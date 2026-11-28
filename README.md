@@ -26,27 +26,23 @@ MVP universitario con datos de demostración en una base real y pagos simulados.
 
 React 19, TypeScript, TanStack Start/Router v1, TanStack Query v5, Vite, Tailwind CSS v4, componentes shadcn/Radix, Lovable Cloud (PostgreSQL, autenticación y almacenamiento), AI SDK, Zod y Vitest. Gestor de paquetes: Bun. Drizzle Kit está configurado para migraciones SQL; no se usa ORM en las consultas funcionales de la app.
 
-## Instalación y ejecución
+## Cómo probar la demo
 
-Requisitos: Bun compatible con `bun.lock`, internet y configuración del servicio de Lovable Cloud. La versión mínima exacta de Bun es **No determinado**.
+La forma recomendada de probar WaraVita es abrir la aplicación publicada, sin instalar nada:
 
-Desde la raíz del repositorio:
+https://pixel-perfect-picture-7195.lovable.app
 
-```bash
+Los datos de la cuenta de prueba están en el archivo GithubRepo.txt incluido en la entrega. También se puede crear una cuenta propia desde la pantalla de registro.
+
+## Ejecución local (opcional)
+
+El equipo desarrolló y probó la aplicación en su versión publicada; la ejecución local no fue probada. Para intentarla se necesita Bun (https://bun.sh).
+
 bun install --frozen-lockfile
 bun run dev
-```
 
-Abrir la dirección indicada por Vite. Configurar las variables descritas en la documentación; el diagnóstico necesita `LOVABLE_API_KEY` solo en servidor. La instalación no crea por sí sola las tablas ni el almacenamiento de imágenes.
+Abrir la dirección que indica la terminal. La aplicación se conecta a un servicio externo (Lovable Cloud) para la base de datos, la autenticación y las fotos, y el diagnóstico con IA necesita una clave privada (LOVABLE_API_KEY) que no se incluye en el repositorio. Sin esa clave, el diagnóstico con IA no funcionará en una ejecución local.
 
-```bash
-bun run test
-bun run lint
-bun run build
-bun run preview
-```
-
-**Seguridad:** el README anterior publicaba una contraseña. Aquí se eliminó del texto, pero permanece en el historial; se recomienda cambiarla. No publicar secretos ni credenciales de cuentas.
 
 ## Documentación completa
 
