@@ -4,9 +4,9 @@
 
 ## Alcance y evidencia
 
-Documento del proyecto existente, sin cambios al código, al diseño ni a la base de datos. Se revisaron las pantallas, consultas, funciones de servidor, migraciones, configuración y pruebas del repositorio. Se consultó en modo lectura la definición actual de las cuatro funciones de negocio, el número de especies y kits y la configuración del almacenamiento `fotos` en Lovable Cloud.
+Documento del MVP de WaraVita. Describe las pantallas, el flujo de servicios, el diagnóstico con IA, el modelo de datos, la configuración y las limitaciones del prototipo.
 
-**Estados:** «Funciona» significa que hay implementación conectada a datos o servicios reales, no una maqueta; no equivale a certificar una nueva prueba completa de usuario en esta revisión. «Simulado» identifica acciones sin operación comercial real. «No implementado» indica ausencia en el código revisado. Cuando no hay evidencia suficiente se usa «No determinado». No se crearon cuentas, pedidos ni diagnósticos para elaborar este documento.
+**Estados:** «Funciona» significa que hay implementación conectada a datos o servicios reales, no una maqueta; no equivale a certificar una nueva prueba completa de usuario en esta revisión. «Simulado» identifica acciones sin operación comercial real. «No implementado» indica ausencia en el código revisado. Cuando no hay evidencia suficiente se usa «No determinado».
 
 ## A. Descripción general
 
@@ -33,8 +33,6 @@ Las rutas indicadas son las URL del usuario: `_authenticated` es un agrupador in
 | Cuidado y Diagnóstico IA | `/diagnostico/$id` | Capturar/subir foto, añadir descripción, pedir diagnóstico, seleccionar acciones y guardar una nota con la foto. | Planta real en base de datos; cámara/archivo; API de IA real; escritura en `registros` y almacenamiento. | Funciona como integración real; la etiqueta previa «Tejido sano — 98% confianza» es simulada. |
 | Perfil | `/perfil` | Ver nombre, correo, plan y análisis restantes; activar Premium y cerrar sesión. No hay formulario para editar el perfil. | `profiles`, correo de autenticación y función `activar_premium()`. | Funciona; cobro y suscripción Premium simulados. |
 | Recordatorios | `/recordatorios` | Con Premium, crear riego/abono/revisión para una fecha; consultar, completar y eliminar registros propios. | Base de datos real: `profiles`, `plantas_usuario`, `recordatorios`. | Funciona como lista de tareas; envío de avisos externos No implementado. |
-
-**Detalles de fidelidad:** el acceso «Guías» abre `/nosotros`, no una biblioteca de guías. El formulario de Inicio envía la búsqueda a la Tienda: no busca contenido de guías. Los roles del equipo visibles en `Landing.tsx` difieren de los roles solicitados para el README de esta entrega; no se cambió la app. No se verificó la fuente de las cifras «50%» y pérdidas por hogar mostradas en la presentación: No determinado.
 
 ## C. Flujo de servicios del MVP
 
@@ -194,43 +192,25 @@ Se indican únicamente nombres; no se reproducen valores, direcciones internas n
 | `SUPABASE_SERVICE_ROLE_KEY` | Referenciada por el cliente administrativo generado; no se usa en el flujo de negocio revisado. No es necesaria para las consultas autenticadas normales y no está disponible para extracción en Lovable Cloud. |
 | `LOVABLE_CRON_SECRET`, `LOVABLE_CRON_SECRET_PREVIOUS` | Referenciadas en un helper generado de validación de tareas programadas. No se encontró una tarea o ruta que lo utilice; no son necesarias para los recordatorios actuales. |
 
-**Advertencia explícita:** el README anterior contenía un correo de acceso acompañado de una **contraseña en texto plano**, en la sección «Cómo probar la demo». Esa contraseña no debe publicarse. Este reemplazo la omite, pero no la elimina de versiones anteriores ni del historial del repositorio. Se recomienda cambiar la contraseña de esa cuenta y revisar dónde se compartió. No se modificó ninguna cuenta.
 
-En la revisión de archivos de texto versionados no se detectaron valores literales de claves privadas de API o de servicio. Las claves de conexión presentes en `.env` son publicables; eso no las convierte en secretos administrativos. Sí existen referencias a nombres de variables privadas, lo cual no equivale a exponer su valor. Esta revisión no es una auditoría exhaustiva del historial ni del almacén de secretos; contenido de esos ámbitos: **No determinado**.
 
-## I. Cómo ejecutar el proyecto
+## Cómo probar la demo
+> **Nota:** la forma recomendada de probar el MVP es la aplicación publicada (enlace al final de esta sección). La ejecución local descrita aquí es opcional y no fue probada por el equipo.
 
-### Requisitos
+La forma recomendada de probar WaraVita es abrir la aplicación publicada, sin instalar nada:
 
-- Bun instalado y compatible con el `bun.lock` del proyecto. Versión mínima exacta de Bun: **No determinado** (no hay campo `engines` que la establezca).
-- Acceso a los archivos del repositorio e internet para instalar dependencias y consultar servicios reales.
-- Configuración de conexión pública del navegador y del servidor descrita en H; `LOVABLE_API_KEY` para probar diagnóstico en un entorno con función de servidor habilitada.
-- Base de datos configurada con tablas, políticas y funciones del proyecto, y contenedor privado `fotos` para guardar imágenes. El proyecto está conectado a Lovable Cloud; no incluye un comando que cree automáticamente toda esa infraestructura local.
-- Permisos de cámara y contexto seguro para capturar imágenes (HTTPS o localhost); como alternativa se puede subir un archivo.
+https://pixel-perfect-picture-7195.lovable.app
 
-Desde la raíz del proyecto:
+Los datos de la cuenta de prueba están en el archivo GithubRepo.txt incluido en la entrega. También se puede crear una cuenta propia desde la pantalla de registro.
 
-```bash
+## Ejecución local (opcional)
+
+El equipo desarrolló y probó la aplicación en su versión publicada; la ejecución local no fue probada. Para intentarla se necesita Bun (https://bun.sh).
+
 bun install --frozen-lockfile
 bun run dev
-```
 
-Abrir la dirección que Vite imprime en la terminal. El puerto de una instalación fuera del entorno Lovable es **No determinado** en el código específico de esta app; no se promete un puerto fijo.
-
-Comandos adicionales declarados en `package.json`:
-
-```bash
-bun run test
-bun run lint
-bun run build
-bun run preview
-```
-
-`bun run build` prepara la aplicación; `bun run preview` ejecuta el script de vista previa definido. `bun run format` existe, pero reescribe archivos: no hace falta para probar la entrega. El repositorio no declara scripts para aplicar migraciones ni para aprovisionar una base local. No ejecutar una generación automática de esquema sobre `drizzle/schema.ts` vacío como si describiera las tablas existentes.
-
-**Pruebas ejecutadas para esta revisión:** `bunx vitest run src/lib/reglas.test.ts src/test/app-routing.test.tsx`: seis pruebas aprobadas. Cubren límite gratuito, reinicio mensual en la regla de interfaz, Premium ilimitado, precio Premium, suma de carrito y coincidencia de `/`. No prueban una sesión real, llamadas de IA, políticas de base de datos ni pagos. No se ejecutó un nuevo empaquetado manual ni una prueba integral de usuario; el registro disponible de la vista previa indicaba `build OK`.
-
-App publicada: https://pixel-perfect-picture-7195.lovable.app
+Abrir la dirección que indica la terminal. La aplicación se conecta a un servicio externo (Lovable Cloud) para la base de datos, la autenticación y las fotos, y el diagnóstico con IA necesita una clave privada (LOVABLE_API_KEY) que no se incluye en el repositorio. Sin esa clave, el diagnóstico con IA no funcionará en una ejecución local.
 
 ## J. Limitaciones conocidas
 
