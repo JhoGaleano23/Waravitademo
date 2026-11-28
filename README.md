@@ -1,48 +1,62 @@
-WaraVita
+# WaraVita
 
-Ecosistema que une un kit de siembra con una aplicación web/móvil para identificar, cuidar y coleccionar plantas nativas colombianas, con diagnóstico asistido por inteligencia artificial.
+Aplicación web para cuidar y coleccionar plantas nativas colombianas.  
+Combina kits de siembra, jardín digital, fichas de cultivo y diagnóstico por foto con IA.  
+MVP universitario con datos de demostración en una base real y pagos simulados.
 
-Proyecto de la materia Proyecto en Innovación y Emprendimiento en TI, Pontificia Universidad Javeriana (Ingeniería de Sistemas).
+**App publicada:** https://pixel-perfect-picture-7195.lovable.app
 
-Enlaces
-App publicada (probar sin instalar): https://pixel-perfect-picture-7195.lovable.app
-Repositorio: https://github.com/JhoGaleano23/Waravitademo
-¿Qué es WaraVita?
+## Funcionalidades
 
-Muchas personas pierden sus plantas porque no saben qué especie tienen ni cómo cuidarla. WaraVita acompaña al usuario desde la siembra: compra un kit, registra su planta en una enciclopedia digital coleccionable y usa la cámara del celular para recibir un diagnóstico de salud y recomendaciones de cuidado.
-Tecnologías
+| Funcionalidad | Estado |
+|---|---|
+| Registro, ingreso y cierre de sesión por correo/contraseña | Implementado con autenticación real. |
+| Catálogo, búsqueda y filtros | Implementado; ocho especies y ocho kits de ejemplo en base real. |
+| Carrito y confirmación de pedido | Carrito local; pedido y plantas persistentes; pago simulado. |
+| Mi jardín, herbario y ficha editable | Implementado con datos reales del usuario. |
+| Diagnóstico por foto con IA | Integración real con Lovable AI Gateway; modelo configurado `openai/gpt-6-astra`; resultado orientativo. |
+| Registro fotográfico y guardado de cuidados | Implementado; fotos privadas y registros en base de datos. |
+| Premium | Cambio de plan implementado; COP 15.000/mes mostrado, sin cobro ni renovación real. |
+| Recordatorios Premium | Lista real de tareas; envío de notificaciones No implementado. |
+| Pasarela de pagos, logística y app móvil nativa | No implementado. |
 
-Según la estructura del proyecto:
+«Implementado» describe evidencia del código y servicios conectados; no certifica una nueva prueba integral. Para esta revisión pasaron las seis pruebas existentes de reglas y ruta inicial.
 
-TanStack Start (React) con TypeScript y Vite
-Bun como gestor de paquetes (bun.lock)
-Supabase como backend (carpeta supabase) y Drizzle ORM (carpeta drizzle)
-Vitest, ESLint y Prettier para pruebas y calidad de código
-Construido con Lovable
-Instalación local
+## Tecnologías
 
-Requisitos: Node.js (versión 18 o superior) o Bun.
-git clone https://github.com/JhoGaleano23/pixel-perfect-picture-7195.git
-cd pixel-perfect-picture-7195
-npm install      # o: bun install
-npm run dev      # o: bun run dev
-El archivo .env incluido en el repositorio contiene la configuración necesaria para conectar con el backend.
+React 19, TypeScript, TanStack Start/Router v1, TanStack Query v5, Vite, Tailwind CSS v4, componentes shadcn/Radix, Lovable Cloud (PostgreSQL, autenticación y almacenamiento), AI SDK, Zod y Vitest. Gestor de paquetes: Bun. Drizzle Kit está configurado para migraciones SQL; no se usa ORM en las consultas funcionales de la app.
 
-Cómo probar la demo
-Abrir la app publicada: https://pixel-perfect-picture-7195.lovable.app
-usuario: Albertgaleano0717@gmail.com
-Clave: Proyectoinnovacion123!
-Recorrer en este orden: Inicio, Tienda, Mi jardín, Ficha de planta y Diagnóstico con IA.
-Para el diagnóstico, subir o tomar una foto de una hoja o planta.
-Limitaciones del MVP
-Es un prototipo para validar la idea, no un producto final.
- (el pago es simulado)
-los datos de especies y kits son de ejemplo]
-[el diagnóstico de IA es orientativo y puede equivocarse]
+## Instalación y ejecución
 
-Equipo
-Integrante	Rol  \
-Diego Martínez	Desarrollador Backend\
-Karol Torres	Frontend y diseño UI/UX\
-Jhoan Galeano	Desarrollador Fronted\
-Juan Duarte	Marketing
+Requisitos: Bun compatible con `bun.lock`, internet y configuración del servicio de Lovable Cloud. La versión mínima exacta de Bun es **No determinado**.
+
+Desde la raíz del repositorio:
+
+```bash
+bun install --frozen-lockfile
+bun run dev
+```
+
+Abrir la dirección indicada por Vite. Configurar las variables descritas en la documentación; el diagnóstico necesita `LOVABLE_API_KEY` solo en servidor. La instalación no crea por sí sola las tablas ni el almacenamiento de imágenes.
+
+```bash
+bun run test
+bun run lint
+bun run build
+bun run preview
+```
+
+**Seguridad:** el README anterior publicaba una contraseña. Aquí se eliminó del texto, pero permanece en el historial; se recomienda cambiarla. No publicar secretos ni credenciales de cuentas.
+
+## Documentación completa
+
+[Documentación del MVP: pantallas, flujo, IA, datos, configuración y limitaciones](docs/MVP_DOCUMENTACION.md).
+
+## Equipo
+
+| Integrante | Rol |
+|---|---|
+| Diego Martínez | Desarrollador Backend |
+| Karol Torres | Frontend y diseño UI/UX |
+| Jhoan Galeano | Finanzas y sistemas |
+| Juan Duarte | Marketing |
